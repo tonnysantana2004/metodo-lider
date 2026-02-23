@@ -1,0 +1,9 @@
+RewriteEngine On
+
+RewriteRule ^dist/metodo-lider/browser/ - [L]
+
+RewriteCond %{DOCUMENT_ROOT}/dist/metodo-lider/browser/%{REQUEST_URI} -f [OR]
+RewriteCond %{DOCUMENT_ROOT}/dist/metodo-lider/browser/%{REQUEST_URI} -d
+RewriteRule ^(.*)$ dist/metodo-lider/browser/$1 [L]
+
+RewriteRule ^.*$ dist/metodo-lider/browser/index.html [L]
