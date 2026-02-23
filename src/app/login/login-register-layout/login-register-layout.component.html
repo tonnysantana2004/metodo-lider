@@ -1,0 +1,43 @@
+<section id="login-register-wrapper">
+
+	<div class="form-column">
+
+		<div class="logo">
+
+			<img src="/assets/joaquim-folmer-icon.png" class="logo-image">
+			<div class="logo-title">
+				<h2 class="title-3">Bem vindo de volta</h2>
+				<p>Por favor, insira os detalhes de login abaixo:</p>
+			</div>
+
+		</div>
+
+		<form [formGroup]="loginForm" (ngSubmit)="submit()">
+
+			<app-text-input
+					label="Email"
+					placeholder="Insira seu email"
+					[errors]="getFieldErrors('email')"
+					formControlName="email"
+			/>
+			<app-password-input
+					label="Senha"
+					placeholder="Insira sua senha"
+					[errors]="getFieldErrors('password')"
+					formControlName="password"
+			/>
+			
+			<p style="text-decoration: underline">Esqueceu sua senha?</p>
+			<input type="submit" value="Enviar">
+
+		</form>
+
+	</div>
+
+	<div class="image-column">
+
+		<img src="/assets/metodo-lider-banner.jpg" >
+
+	</div>
+
+</section>

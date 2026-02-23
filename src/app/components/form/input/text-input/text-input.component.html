@@ -1,0 +1,17 @@
+<div class="form-control">
+	<label	for="">{{label}}</label>
+	<input 	type="text"
+		   	[value]="value"
+		   	[placeholder]="placeholder"
+		  	[disabled]="disabled"
+		   	(input)="onChange(value)"
+		  	(blur)="onTouched()"
+	>
+	<div class="field-footer">
+        <span class="field-errors">
+            @for (error of errorMessages ; track $index) {
+				<p>{{ error }}</p>
+			}
+        </span>
+	</div>
+</div>

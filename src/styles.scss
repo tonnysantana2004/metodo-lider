@@ -1,0 +1,118 @@
+@use "abstracts" as *;
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=block');
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: vwsize(16px);
+  line-height: 1em;
+  background-color: $light-gray;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  // font-family: "Noto Serif", sans-serif;
+  color: $primary-color;
+}
+
+p, span, button, a {
+  font-family: inherit;
+}
+
+.title-4 {
+  font-size: 1.5em;
+  font-weight: 800;
+}
+
+.title-3 {
+  font-size: 1.8em;
+  font-weight: 800;
+}
+
+
+input {
+  font-size:1em;
+  font-family: inherit;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Remove margens, paddings e define box-sizing */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Remove decoração de links e listas */
+a {
+  text-decoration: underline;
+  color: #0349b0;
+  font-weight: bold;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove bordas e outline de elementos de formulário */
+button{
+  border: none;
+  outline: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+}
+
+/* Normaliza imagens e vídeos */
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Remove espaçamento em tabelas */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Normaliza elementos semântico HTML5 */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}

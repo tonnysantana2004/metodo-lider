@@ -1,0 +1,58 @@
+@use "abstracts" as *;
+
+#login-register-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: vwsize($space-md);
+  padding: vwsize($space-md);
+  justify-content: center;
+  align-items: center;
+}
+
+.form-column {
+  width: vwsize(520px);
+  display: flex;
+  gap: vwsize($space-md);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin:auto;
+
+  & form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: vwsize($space-lg);
+  }
+}
+
+.image-column{
+  border-radius: vwsize($space-sm);
+  overflow: hidden;
+  width: 100%;
+  & img {
+    width:100%;
+  }
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+  gap: vwsize($space-md);
+  width:fit-content;
+  & img {
+    width: vwsize(60px);
+  }
+
+  & .logo-title{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: vwsize($space-sm);
+  }
+}
+
+h2 {
+  color:black;
+}
