@@ -11,6 +11,5 @@ export class ButtonPrimaryComponent {
     @Input() text: string = "Texto do botão";
     @Input() link: string = "";
     @Input() type: string = "button";
-    tag : string = "button";
 
 }

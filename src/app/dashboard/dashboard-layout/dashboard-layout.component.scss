@@ -1,0 +1,24 @@
+@use "abstracts" as *;
+
+.layout-wrapper {
+	display:grid;
+	grid-template-columns:vwsize(340px) 1fr;
+	height: 100vh;
+	
+	.content {
+		padding: vwsize($space-lg);
+	}
+}
+
+.side-bar {
+	background:white;
+	height: 100%;
+	padding: vwsize($space-lg);
+	display: flex;
+	flex-direction: column;
+	gap: vwsize($space-lg);
+	& .logo {
+
+	width:100%;
+	}
+}
