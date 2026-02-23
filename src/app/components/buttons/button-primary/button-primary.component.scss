@@ -1,0 +1,17 @@
+@use "abstracts" as *;
+
+a {
+  all: unset!important;
+}
+
+.button {
+  background: linear-gradient(to right,#12141F, #2B2E45);
+  height: $input-height;
+  padding: 0 vwsize($space-sm);
+  text-align: center;
+  color: white;
+  border-radius: $border-radius;
+  width: 100%;
+  cursor: pointer;
+
+}
