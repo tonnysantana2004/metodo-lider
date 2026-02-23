@@ -33,10 +33,8 @@ export class PasswordInputComponent implements ControlValueAccessor {
             switch (key) {
                 case "required":
                     return this.label + " é obrigatório."
-                case 'email':
-                    return 'E-mail inválido.';
-                case 'minlength':
-                    return 'Mínimo de caracteres não atingido.';
+                case 'invalidCredentials':
+                    return 'Senha ou e-mail inválidos.';
                 default:
                     return this.label + ' tem um valor inválido.';
             }
