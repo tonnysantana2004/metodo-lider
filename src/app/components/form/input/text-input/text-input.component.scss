@@ -1,18 +1,22 @@
 @use "abstracts" as *;
 
 .form-control {
-  display: flex;
-  flex-direction: column;
-  gap: vwsize($space-sm);
-  width: 100%;
-
-  & input {
-    height: vwsize($input-height);
-    border-radius: .4em;
-    border: solid 1px #e0e0e0;
-    outline: none;
-    padding: 0 vwsize($space-sm);
-    box-shadow: 0px vwsize(3px) 2px #dadada;
-  }
-
+	display: flex;
+	flex-direction: column;
+	gap: vwsize($space-sm);
+	width: 100%;
+	
+	& input {
+		height: vwsize($input-height);
+		border-radius: .4em;
+		border: solid 1px #e0e0e0;
+		outline: none;
+		padding: 0 vwsize($space-sm);
+		box-shadow: 0px vwsize(3px) 2px #dadada;
+	}
+	
+	& .field-errors {
+		color: red;
+	}
+	
 }

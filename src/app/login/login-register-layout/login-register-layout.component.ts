@@ -2,6 +2,7 @@ import {Component, inject} from '@angular/core';
 import {FormBuilder, FormControl, ReactiveFormsModule, Validators} from "@angular/forms";
 import {TextInputComponent} from "../../components/form/input/text-input/text-input.component";
 import {PasswordInputComponent} from "../../components/form/input/password-input/password-input.component";
+import {ButtonPrimaryComponent} from "../../components/buttons/button-primary/button-primary.component";
 
 @Component({
     selector: 'app-login-register-layout',
@@ -9,7 +10,8 @@ import {PasswordInputComponent} from "../../components/form/input/password-input
     imports: [
         ReactiveFormsModule,
         TextInputComponent,
-        PasswordInputComponent
+        PasswordInputComponent,
+        ButtonPrimaryComponent
     ],
     templateUrl: './login-register-layout.component.html',
     styleUrl: './login-register-layout.component.scss'
@@ -18,28 +20,25 @@ import {PasswordInputComponent} from "../../components/form/input/password-input
 export class LoginRegisterLayoutComponent {
 
     public formBuilder = inject(FormBuilder);
-    public loginForm;
+    public loginForm = this.formBuilder.group
+    ({
+        email: new FormControl('', [Validators.required, Validators.email]),
+        password: new FormControl('', [Validators.required])
+    });
 
-    constructor() {
-        this.loginForm = this.formBuilder.group({
-            email: new FormControl('', [Validators.required, Validators.email]),
-            password: new FormControl('', [Validators.required])
-        });
-    }
-
-    submit() : void {
+    submit(): void {
         if (this.loginForm.invalid) {
-            console.log("campos inválidos");
+            this.loginForm.markAllAsTouched();
             return;
         }
         console.log(this.loginForm.value);
     }
 
     getFieldErrors(fieldName: string): any {
-        if (!this.loginForm.get(fieldName)?.invalid) return null;
-        if (!this.loginForm.get(fieldName)?.dirty) return null;
-        if (!this.loginForm.get(fieldName)?.touched) return null;
-        return this.loginForm.get(fieldName)?.errors
+        const control = this.loginForm.get(fieldName);
+        if (control?.invalid && control?.touched) return control?.errors;
+
+        return null;
     }
 
 }
