@@ -1,0 +1,48 @@
+@use "abstracts" as *;
+
+.card-wrapper{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.card-block {
+  background: white;
+  border-radius: $border-radius;
+  box-shadow: 0px vwsize(3px) 2px $soft-white;
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: vwsize($space-lg) vwsize($space-md) vwsize($space-md)  vwsize($space-md);
+
+    border-bottom:solid 1px $soft-white;
+
+    .title-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: vwsize($space-sm);
+
+      .title {
+        color: $primary-color;
+      }
+
+      .subtitle {
+        font-size: vwsize(12px);
+        color: #7b7b7b;
+      }
+    }
+  }
+
+  .chart-wrapper {
+    padding: vwsize($space-md);
+    width: 100%;
+    > div {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
