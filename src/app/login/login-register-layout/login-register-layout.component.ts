@@ -33,7 +33,7 @@ export class LoginRegisterLayoutComponent {
     public constructor() {
 
         if(localStorage.getItem('access_token')) {
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/overview']);
         }
 
     }

@@ -1,12 +1,12 @@
 @use "abstracts" as *;
 
 a {
-  all: unset!important;
+  all: unset !important;
 }
 
 .button {
-  background: linear-gradient(to right,#12141F, #2B2E45);
-  height: $input-height;
+  background: $accent-color;  
+  height: vwsize(50px);
   padding: 0 vwsize($space-sm);
   text-align: center;
   color: white;

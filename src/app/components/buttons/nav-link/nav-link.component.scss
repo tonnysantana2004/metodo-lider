@@ -1,0 +1,47 @@
+@use "abstracts" as *;
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: vwsize($space-sm);
+  padding: 0 vwsize($space-md);
+  height: vwsize(50px);
+  border-radius: $border-radius;
+  color: $text-color;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  width: 100%;
+
+  &:hover {
+    background-color: color-mix(in srgb, $accent-color 05%, transparent);
+    color: rgb(8, 6, 12);
+
+    & .nav-link__icon {
+      color: $accent-color;
+    }
+  }
+
+  &__text {
+    font-size: 1em;
+    font-weight: 600;
+  }
+
+    
+  &:has(.nav-link__icon.active) {
+    background-color: color-mix(in srgb, $accent-color 05%, transparent);
+    color: rgb(8, 6, 12);
+
+    & .nav-link__icon {
+      color: $accent-color;
+    }
+  }
+
+}
+
+.nav-link__icon {
+  width: vwsize(24px)!important;
+  height: vwsize(24px)!important;
+
+
+}

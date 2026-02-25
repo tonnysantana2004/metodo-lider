@@ -1,0 +1,12 @@
+<div class="card-block" [style.color]="color">
+    
+    <span class="card-icon">
+        <ng-content></ng-content>
+    </span>
+
+    <div class="count-wrapper">
+        <span class="count-number title-4">{{(countNumber).toLocaleString('pt-BR')}}</span>
+        <span class="count-text">{{text}}</span>
+    </div>
+
+</div>

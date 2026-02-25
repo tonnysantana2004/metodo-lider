@@ -1,0 +1,28 @@
+@use "abstracts" as *;
+
+.card-block{
+    padding: vwsize(50px) vwsize($space-md);
+    background:white;
+    border-radius: $border-radius;
+    box-shadow: 0px vwsize(3px) 2px #d9dadb;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    justify-content: center;
+    align-items: center;
+
+    & .card-icon {
+        width: vwsize(70px);
+        display: flex;
+        padding: vwsize(20px);
+        background-color:color-mix(in srgb, currentColor 5.5%, transparent);
+        border-radius: 100%;
+        margin:auto
+    }
+
+    & .count-wrapper{
+        display: flex;
+        flex-direction: column;
+        gap: vwsize($space-sm);
+        color:$primary-color;
+    }
+}

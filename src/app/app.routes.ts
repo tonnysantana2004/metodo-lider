@@ -1,6 +1,6 @@
 import {Routes} from '@angular/router';
 import {LoginRegisterLayoutComponent} from "./login/login-register-layout/login-register-layout.component";
-import {HomeComponent} from "./dashboard/home/home.component";
+import {overviewComponent} from "./dashboard/overview/overview.component";
 import {authGuardGuard} from "./auth-guard.guard";
 
 export const routes: Routes = [
@@ -9,12 +9,12 @@ export const routes: Routes = [
         component: LoginRegisterLayoutComponent
     },
     {
-        path: 'dashboard',
-        component: HomeComponent,
+        path: 'overview',
+        component: overviewComponent,
         canActivate: [authGuardGuard]
     },
     {
         path: '**',
-        redirectTo: 'dashboard',
+        redirectTo: 'overview',
     }
 ];

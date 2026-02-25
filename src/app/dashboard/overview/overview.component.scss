@@ -1,0 +1,7 @@
+@use "abstracts" as *;
+
+.countdown-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: vwsize($space-lg)
+}
