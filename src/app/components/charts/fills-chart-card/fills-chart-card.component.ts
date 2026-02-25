@@ -32,6 +32,7 @@ export class FillsChartCardComponent implements AfterViewInit, OnDestroy, OnChan
 
   private chart?: ApexCharts;
 
+  // Configurações iniciais do chart
   ngAfterViewInit(): void {
     const options: any = {
       chart: {
@@ -41,7 +42,7 @@ export class FillsChartCardComponent implements AfterViewInit, OnDestroy, OnChan
           show: false,
         },
         zoom: {
-          enabled: false,
+          enabled: true,
         },
       },
       dataLabels: {
@@ -49,7 +50,7 @@ export class FillsChartCardComponent implements AfterViewInit, OnDestroy, OnChan
       },
       stroke: {
         curve: 'smooth',
-        width: 2,
+        width: 7,
       },
       series: this.buildSeries(),
       xaxis: {
@@ -66,17 +67,17 @@ export class FillsChartCardComponent implements AfterViewInit, OnDestroy, OnChan
       fill: {
         type: 'gradient',
         gradient: {
-          shadeIntensity: 1,
-          opacityFrom: 0.4,
-          opacityTo: 0,
-          stops: [0, 90, 100],
+          shadeIntensity: 0.2,
+          opacityFrom: 1,
+          opacityTo: 0.4,
+          stops: [10, 100],
         },
       },
       legend: {
-        position: 'top',
+        position: 'bottom',
         horizontalAlign: 'left',
       },
-      colors: ['#5428ce', '#3fb2fb', '#ff894f'],
+      colors: ['#5428ce', '#3fb2fb'],
       tooltip: {
         x: {
           format: 'dd/MM/yyyy',
@@ -88,6 +89,8 @@ export class FillsChartCardComponent implements AfterViewInit, OnDestroy, OnChan
     this.chart.render();
   }
 
+  // Garante que o chart é atualizado
+  // sempre que as variáveis forem
   ngOnChanges(changes: SimpleChanges): void {
     if (!this.chart) {
       return;
