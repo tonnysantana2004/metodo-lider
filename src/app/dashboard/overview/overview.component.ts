@@ -5,6 +5,7 @@ import { FillsChartCardComponent } from "../../components/charts/fills-chart-car
 import { CardWithHeaderComponent } from "../../components/cards/card-with-header/card-with-header.component";
 import { UserListItemComponent } from "../../components/listings/user-list-item/user-list-item.component";
 import { UserService } from '../../services/user.service';
+import { PostService } from '../../services/post.service';
 
 @Component({
     selector: 'app-overview',
@@ -24,14 +25,25 @@ import { UserService } from '../../services/user.service';
 export class overviewComponent {
 
     private userService = inject(UserService);
-    public users :any[] = [];
+    private postService = inject(PostService);
+    public users : any[] = [];
+    public posts : any[] = [];
+    public lastUsersThatFill : any[] = []
 
     constructor() {
         
         this.userService.findAll().subscribe(users => {
             this.users = users;
+
+            users.forEach(user => {
+                let userPosts = this.postService.findAllByUserId(user.id);
+                
+            })
         });
 
+        this.postService.findAll().subscribe(posts => {
+            this.posts = posts;
+        })
     }
 
 }

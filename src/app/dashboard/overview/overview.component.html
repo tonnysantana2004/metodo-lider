@@ -1,9 +1,38 @@
 <app-dashboard-layout>
     <div class="overview-wrapper">
 
+        <section class="chart-section">
+            <app-card-with-header headerTitle="Preenchimentos nos últimos 7 dias">
+                <app-fills-chart-card style="height: calc(350 * 100vw/1920); display: flex;"></app-fills-chart-card>
+            </app-card-with-header>
+
+            <app-card-with-header headerTitle="Usuários que preencheram hoje">
+
+                <div class="users-list">
+                    @for (user of users.slice(0,5); track user; let i = $index) {
+                    <app-user-list-item 
+                        [profileImage]="user.profileImage"
+                        [fullName]="user.fullName"
+                        [email]="user.email"
+                        [phone]="user.phone"
+                        [count]="2"
+                    />
+                    }
+                </div>
+
+            </app-card-with-header>
+        </section>
+
         <section class="countdown-cards">
 
             <app-countdown-card text="Usuários Cadastrados" [countNumber]="users.length" color="#5428ce">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                    <path
+                        d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z" />
+                </svg>
+            </app-countdown-card>
+
+            <app-countdown-card text="Usuários ociosos" [countNumber]="2" color="#fc4c80">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                     <path
                         d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z" />
@@ -24,35 +53,9 @@
                 </svg>
             </app-countdown-card>
 
-            <app-countdown-card text="Usuários ociosos" [countNumber]="1000" color="#fc4c80">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                    <path
-                        d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z" />
-                </svg>
-            </app-countdown-card>
         </section>
 
-        <section class="chart-section">
-            <app-card-with-header headerTitle="Preenchimentos nos últimos 7 dias">
-                <app-fills-chart-card style="height: calc(350 * 100vw/1920); display: flex;"></app-fills-chart-card>
-            </app-card-with-header>
-
-            <app-card-with-header headerTitle="Últimos usuários a preencher">
-
-                <div class="users-list">
-                    @for (user of users.slice(0,5); track user; let i = $index) {
-                    <app-user-list-item 
-                        [profileImage]="user.profileImage"
-                        [fullName]="user.fullName"
-                        [email]="user.email"
-                        [phone]="user.phone"
-                        [count]="2"
-                    />
-                    }
-                </div>
-
-            </app-card-with-header>
-        </section>
+        
     </div>
 
 </app-dashboard-layout>

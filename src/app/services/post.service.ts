@@ -15,4 +15,20 @@ export class PostService {
     return this.http.get<any[]>(this.postsUrl);
   }
 
+  findAllByUserId(userId : number) {
+
+    return this.http.get<any[]>(this.postsUrl).subscribe(post => {
+      post.filter(post => post.userId === userId)
+    });
+
+  }
+
+  findPostsByDate(date : string) {
+
+    return this.http.get<any[]>(this.postsUrl).subscribe(post => {
+      post.filter(post => post.date === date)
+    });
+
+  }
+
 }
