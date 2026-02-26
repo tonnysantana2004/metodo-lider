@@ -10,6 +10,7 @@ import {NavLinkComponent} from "../../components/buttons/nav-link/nav-link.compo
         ButtonPrimaryComponent,
         NavLinkComponent
     ],
+    standalone : true,
     templateUrl: './dashboard-layout.component.html',
     styleUrl: './dashboard-layout.component.scss'
 })

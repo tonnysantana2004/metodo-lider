@@ -14,6 +14,7 @@ import {Router} from "@angular/router";
         PasswordInputComponent,
         ButtonPrimaryComponent
     ],
+    standalone : true,
     templateUrl: './login-register-layout.component.html',
     styleUrl: './login-register-layout.component.scss'
 })

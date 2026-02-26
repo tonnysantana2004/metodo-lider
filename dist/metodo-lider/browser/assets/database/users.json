@@ -1,20 +1,34 @@
 [
     {
         "id": 1,
-        "name": "Tonny Santana Santos",
-        "password": "Tonny",
-        "email": "tonny@email.com"
+        "fullName": "Tonny Santana Santos",
+        "password": "123",
+        "email": "tonny@email.com",
+        "phone" : "+5513996846472",
+        "profileImage" : "https://api.dicebear.com/9.x/micah/svg?seed=TonnySantana1"
     },
     {
         "id": 2,
-        "name": "Tonny Santana Santos",
-        "password": "Tonny",
-        "email": "tonny@email.com"
+        "fullName": "Pedro Silva",
+        "password": "123",
+        "email": "pedro@email.com",
+        "phone" : "+5513996846472",
+        "profileImage" : "https://api.dicebear.com/9.x/micah/svg?seed=Sarah234567"
     },
     {
         "id": 3,
-        "name": "Tonny Santana Santos",
-        "password": "Tonny",
-        "email": "tonny@email.com"
+        "fullName": "Fernanda Souza",
+        "password": "123",
+        "email": "fernanda@email.com",
+        "phone" : "+5513996846472",
+        "profileImage" : "https://api.dicebear.com/9.x/micah/svg?seed=Jameson"
+    },
+    {
+        "id": 3,
+        "fullName": "João Paulo",
+        "password": "123",
+        "email": "joaopaulo@email.com",
+        "phone" : "+5513996846472",
+        "profileImage" : "https://api.dicebear.com/9.x/micah/svg?seed=Brooklynn1234"
     }
 ]

@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 @Component({
     selector: 'app-countdown-card',
     imports: [],
+    standalone : true,
     templateUrl: './countdown-card.component.html',
     styleUrl: './countdown-card.component.scss'
 })

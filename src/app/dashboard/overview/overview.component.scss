@@ -14,6 +14,13 @@
 
 .chart-section {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     gap: vwsize($space-lg)
+}
+
+.users-list {
+    display: flex;
+    flex-direction: column;
+    gap: vwsize($space-sm);
+    padding: vwsize($space-sm);
 }

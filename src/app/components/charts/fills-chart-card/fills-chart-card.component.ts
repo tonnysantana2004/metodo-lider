@@ -1,22 +1,14 @@
-import { AfterViewInit, Component, ElementRef, inject, Input, OnChanges, OnDestroy, SimpleChanges, ViewChild } from '@angular/core';
-// import ApexCharts from 'apexcharts';
+import { Component, inject, Input } from '@angular/core';
 import { PostService } from '../../../services/post.service';
 
-interface Series {
-  name: string;
-  data: number[];
-}
-
 import {
-  ChartComponent,
   ApexAxisChartSeries,
   ApexChart,
-  ApexXAxis,
   ApexDataLabels,
+  ApexStroke,
   ApexTooltip,
-  ApexStroke
-} from "apexcharts";
-
+  ApexXAxis, NgApexchartsModule
+} from 'ng-apexcharts';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -25,89 +17,116 @@ export type ChartOptions = {
   stroke: ApexStroke;
   tooltip: ApexTooltip;
   dataLabels: ApexDataLabels;
+  yaxis: any;
+  grid: any;
+  fill: any;
 };
-
-
 
 @Component({
   selector: 'app-fills-chart-card',
   standalone: true,
+  imports: [NgApexchartsModule],
   templateUrl: './fills-chart-card.component.html',
   styleUrl: './fills-chart-card.component.scss',
 })
+export class FillsChartCardComponent {
 
-export class FillsChartCardComponent implements AfterViewInit, OnDestroy, OnChanges {
+  private postService = inject(PostService);
 
-  postService = inject(PostService);
-  public chartOptions: Partial<ChartOptions>;
-  posts: any[];
-  @Input() days;
-  @Input() postTypes;
+  posts: any[] = [];
+
+  @Input() days: number = 7;
+
+  @Input() postTypes = [
+    { type: 'definicao_prioridade', name: 'Definição de Prioridade' },
+    { type: 'postura_lider', name: 'Postura do Líder' },
+  ];
+
+  public chartOptions: ChartOptions = this.getChartOptions();
 
   constructor() {
-    this.days = 7;
-    this.posts = [];
-    
-    this.postTypes = [
-      { type: 'definicao_prioridade', name: 'Definição de Prioridade' },
-      { type: 'postura_lider', name: 'Postura do Líder' },
-    ];
-  }
-
-
-  @ViewChild('chart', { static: true }) chartRef!: ElementRef<HTMLDivElement>;
-  private chart?: ApexCharts;
-
-  ngAfterViewInit(): void {
-    this.postService.findAll().subscribe((posts) => {
+    this.postService.findAll().subscribe(posts => {
       this.posts = posts;
-      const options = this.getChartOptions();
-      this.chart = new ApexCharts(this.chartRef.nativeElement, options);
-      this.chart.render();
+      this.chartOptions = this.getChartOptions();
     });
   }
 
-  private getSeriesData(postType: string) {
+  private getSeriesData(postType: string): number[] {
     const lastDays = this.getLastSevenDays();
-    const results: any = [];
-    lastDays.forEach(day => {
-      let count = 0;
-      this.posts.forEach(post => {
-        if (post.date === day && post.type === postType) ++count;
-      });
-      results.push(count);
+
+    return lastDays.map(day => {
+      return this.posts.filter(p =>
+        p.type === postType &&
+        new Date(p.date).toISOString().slice(0, 10) === day.slice(0, 10)
+      ).length;
     });
-    return results;
   }
 
-  private getSeries(): Series[] {
-    const series: Series[] = [];
-    this.postTypes.forEach(postType => {
-      series.push({
-        name: postType.name,
-        data: this.getSeriesData(postType.type)
-      });
-    });
-    return series;
+  private getSeries(): ApexAxisChartSeries {
+    return this.postTypes.map(pt => ({
+      name: pt.name,
+      data: this.getSeriesData(pt.type)
+    }));
   }
 
-  getChartOptions(): object {
-    var options = {
+  private getChartOptions(): ChartOptions {
+    return {
       series: this.getSeries(),
+
       grid: {
-        padding: {
-          left: 0
+        padding: { left: 0 }
+      },
+
+      chart: {
+        type: 'area',
+        height: '100%',
+        zoom: { enabled: false },
+        toolbar: { show: false },
+        defaultLocale: 'pt-br',
+        locales: [{
+          name: 'pt-br',
+          options: {
+            months: [
+              'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+              'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+            ],
+            shortMonths: [
+              'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+              'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'
+            ],
+            days: [
+              'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'
+            ],
+            shortDays: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
+          }
+        }],
+        events: {
+          mounted: () => {
+
+            const svgTitles = document.querySelectorAll('svg title');
+          
+            if (svgTitles) {
+
+              svgTitles.forEach(title => {
+                title.remove();
+              })
+              
+            }
+          },
+          updated: () => {
+            const svgTitles = document.querySelectorAll('svg title');
+          
+            if (svgTitles) {
+
+              svgTitles.forEach(title => {
+                title.remove();
+              })
+              
+            }
+          }
         }
       },
-      chart: {
-        toolbar: {
-          show: false,
-        },
-        zoom: { enabled: false },
-        height: '100%',
-        type: 'area',
 
-      },
       dataLabels: {
         enabled: false
       },
@@ -115,11 +134,9 @@ export class FillsChartCardComponent implements AfterViewInit, OnDestroy, OnChan
         curve: 'smooth',
         width: 3
       },
-      yaxis: this.getYaxisOptions(),
-      xaxis: this.getXaxisOptions(),
       fill: {
         type: 'gradient',
-        colors: [ "#3fb2fb",'#5428ce'],
+        colors: ["#3fb2fb", '#5428ce'],
         gradient: {
           shadeIntensity: 0.2,
           opacityFrom: 1,
@@ -127,44 +144,49 @@ export class FillsChartCardComponent implements AfterViewInit, OnDestroy, OnChan
           stops: [10, 100],
         },
       },
+
+
+      yaxis: this.getYaxisOptions(),
+
+      xaxis: this.getXaxisOptions(),
+
+
       tooltip: {
-        x: {
-          format: 'dd/MM/yy'
-        },
-      },
+        x: { format: 'dd/MM/yy' }
+      }
     };
-    return options;
   }
 
-  // ['2026-02-26', '2026-02-25', ...]
   private getLastSevenDays(): string[] {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    const dayKeys: string[] = [];
+
+    const days: string[] = [];
+
     for (let i = this.days - 1; i >= 0; i--) {
-      const loopDay = new Date(today);
-      loopDay.setDate(loopDay.getDate() - i);
-      dayKeys.push(loopDay.toISOString());
+      const d = new Date(today);
+      d.setDate(d.getDate() - i);
+      days.push(d.toISOString());
     }
-    return dayKeys;
+
+    return days;
   }
 
-
-  getXaxisOptions(): object {
-    return { type: 'datetime', categories: this.getLastSevenDays() };
+  private getXaxisOptions(): ApexXAxis {
+    return {
+      type: 'datetime',
+      categories: this.getLastSevenDays()
+    };
   }
 
-  getYaxisOptions(): object {
-    const options =
-    {
+  private getYaxisOptions() {
+    return {
       show: true,
       showAlways: false,
       showForNullSeries: true,
       logBase: 10,
       min: 0,
-      max: (maxValue: number) => {
-        return maxValue + 1;
-      },
+      max: (maxValue: number) => maxValue + 1,
       forceNiceScale: true,
       labels: {
         show: true,
@@ -178,28 +200,6 @@ export class FillsChartCardComponent implements AfterViewInit, OnDestroy, OnChan
           fontWeight: 500,
         },
       },
-    }
-    return options;
-  }
-
-  // Garante que o chart é atualizado
-  // sempre que as variáveis forem
-  ngOnChanges(changes: SimpleChanges): void {
-    if (!this.chart) return;
-    if (changes['posts'] || changes['days']) {
-      const series = this.getSeries();
-      const yaxis = this.getYaxisOptions();
-      this.chart.updateOptions(
-        {
-          series,
-          yaxis,
-        },
-        false,
-        true
-      );
-    }
-  }
-  ngOnDestroy(): void {
-    if (this.chart) this.chart.destroy();
+    };
   }
 }

@@ -33,12 +33,24 @@
         </section>
 
         <section class="chart-section">
-            <app-card-with-header title="Preenchimentos nos últimos 7 dias">
+            <app-card-with-header headerTitle="Preenchimentos nos últimos 7 dias">
                 <app-fills-chart-card style="height: calc(350 * 100vw/1920); display: flex;"></app-fills-chart-card>
             </app-card-with-header>
 
-            <app-card-with-header title="Preenchimentos nos últimos 7 dias">
-                <app-fills-chart-card style="height: calc(350 * 100vw/1920); display: flex;"></app-fills-chart-card>
+            <app-card-with-header headerTitle="Últimos usuários a preencher">
+
+                <div class="users-list">
+                    @for (user of users; track user; let i = $index) {
+                    <app-user-list-item 
+                        [profileImage]="user.profileImage"
+                        [fullName]="user.fullName"
+                        [email]="user.email"
+                        [phone]="user.phone"
+                        [count]="2"
+                    />
+                    }
+                </div>
+
             </app-card-with-header>
         </section>
     </div>

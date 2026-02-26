@@ -6,6 +6,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule, Validation
     imports: [
         ReactiveFormsModule
     ],
+    standalone : true,
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
