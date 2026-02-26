@@ -1,0 +1,35 @@
+@use "abstracts" as *;
+
+.card-block {
+  background: white;
+  border-radius: $border-radius;
+  box-shadow: 0px vwsize(3px) 2px $soft-white;
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: vwsize($space-lg) vwsize($space-md) vwsize($space-md)  vwsize($space-md);
+
+    border-bottom:solid 1px $soft-white;
+
+    .title-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: vwsize($space-sm);
+
+      .title {
+        color: $primary-color;
+      }
+
+    }
+  }
+
+  .chart-content {
+    padding: vwsize($space-sm);
+    width: 100%;
+    height: auto;
+  }
+}

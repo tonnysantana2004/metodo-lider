@@ -6,6 +6,14 @@
     gap: vwsize($space-lg)
 }
 
+.overview-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: vwsize($space-lg);
+}
+
 .chart-section {
-    margin-top: vwsize($space-lg);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: vwsize($space-lg)
 }

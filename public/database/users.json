@@ -2,19 +2,22 @@
     {
         "id": 1,
         "name": "Tonny Santana Santos",
-        "password": "Tonny",
-        "email": "tonny@email.com"
+        "password": "123",
+        "email": "tonny@email.com",
+        "phone" : "+5513996846472"
     },
     {
         "id": 2,
-        "name": "Tonny Santana Santos",
-        "password": "Tonny",
-        "email": "tonny@email.com"
+        "name": "Pedro Silva",
+        "password": "123",
+        "email": "pedro@email.com",
+        "phone" : "+5513996846472"
     },
     {
         "id": 3,
-        "name": "Tonny Santana Santos",
-        "password": "Tonny",
-        "email": "tonny@email.com"
+        "name": "Fernanda Souza",
+        "password": "123",
+        "email": "fernanda@email.com",
+        "phone" : "+5513996846472"
     }
 ]

@@ -1,0 +1,20 @@
+<div class="user-list-item">
+  <div class="avatar-wrapper">
+    <img
+      class="avatar"
+      [src]="profileImage"
+      [alt]="fullName || 'Foto do usuário'"
+    />
+
+    <div class="count-badge" *ngIf="count !== null && count !== undefined">
+      {{ count }}
+    </div>
+  </div>
+
+  <div class="info">
+    <div class="name">{{ fullName }}</div>
+    <div class="email">{{ email }}</div>
+    <div class="phone">{{ phone }}</div>
+  </div>
+</div>
+
