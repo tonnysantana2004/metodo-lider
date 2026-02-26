@@ -27,9 +27,11 @@ export class overviewComponent {
     public users :any[] = [];
 
     constructor() {
+        
         this.userService.findAll().subscribe(users => {
             this.users = users;
         });
+
     }
 
 }

@@ -1,7 +1,7 @@
 @use "abstracts" as *;
 
 .card-block{
-    padding: vwsize(50px) vwsize($space-md);
+    padding: vwsize(25px) vwsize($space-md);
     background:white;
     border-radius: $border-radius;
     box-shadow: 0px vwsize(3px) 2px $soft-white;
