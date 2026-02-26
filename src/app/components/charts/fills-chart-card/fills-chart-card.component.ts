@@ -28,6 +28,7 @@ export type ChartOptions = {
 };
 
 
+
 @Component({
   selector: 'app-fills-chart-card',
   standalone: true,

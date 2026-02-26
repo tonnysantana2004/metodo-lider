@@ -8,7 +8,6 @@ import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-login-register-layout',
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TextInputComponent,

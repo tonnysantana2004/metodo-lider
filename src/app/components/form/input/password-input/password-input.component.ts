@@ -3,7 +3,6 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule, Validation
 
 @Component({
     selector: 'app-password-input',
-    standalone: true,
     imports: [
         ReactiveFormsModule
     ],

@@ -1,11 +1,10 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-countdown-card',
-  standalone: true,
-  imports: [],
-  templateUrl: './countdown-card.component.html',
-  styleUrl: './countdown-card.component.scss'
+    selector: 'app-countdown-card',
+    imports: [],
+    templateUrl: './countdown-card.component.html',
+    styleUrl: './countdown-card.component.scss'
 })
 export class CountdownCardComponent {
   @Input() countNumber : number = 1000;

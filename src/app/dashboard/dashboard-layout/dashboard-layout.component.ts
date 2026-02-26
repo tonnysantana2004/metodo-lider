@@ -4,15 +4,14 @@ import {ButtonPrimaryComponent} from "../../components/buttons/button-primary/bu
 import {NavLinkComponent} from "../../components/buttons/nav-link/nav-link.component";
 
 @Component({
-  selector: 'app-dashboard-layout',
-  standalone: true,
+    selector: 'app-dashboard-layout',
     imports: [
         RouterOutlet,
         ButtonPrimaryComponent,
         NavLinkComponent
     ],
-  templateUrl: './dashboard-layout.component.html',
-  styleUrl: './dashboard-layout.component.scss'
+    templateUrl: './dashboard-layout.component.html',
+    styleUrl: './dashboard-layout.component.scss'
 })
 export class DashboardLayoutComponent {
 

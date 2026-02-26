@@ -5,16 +5,15 @@ import { FillsChartCardComponent } from "../../components/charts/fills-chart-car
 import { CardWithHeaderComponent } from "../../components/cards/card-with-header/card-with-header.component";
 
 @Component({
-  selector: 'app-overview',
-  standalone: true,
-  imports: [
-    DashboardLayoutComponent,
-    CountdownCardComponent,
-    FillsChartCardComponent,
-    CardWithHeaderComponent
-],
-  templateUrl: './overview.component.html',
-  styleUrl: './overview.component.scss'
+    selector: 'app-overview',
+    imports: [
+        DashboardLayoutComponent,
+        CountdownCardComponent,
+        FillsChartCardComponent,
+        CardWithHeaderComponent
+    ],
+    templateUrl: './overview.component.html',
+    styleUrl: './overview.component.scss'
 })
 export class overviewComponent {
 
