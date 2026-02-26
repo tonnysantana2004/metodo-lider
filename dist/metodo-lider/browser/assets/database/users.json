@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "name": "Tonny Santana Santos",
+        "password": "Tonny",
+        "email": "tonny@email.com"
+    },
+    {
+        "id": 2,
+        "name": "Tonny Santana Santos",
+        "password": "Tonny",
+        "email": "tonny@email.com"
+    },
+    {
+        "id": 3,
+        "name": "Tonny Santana Santos",
+        "password": "Tonny",
+        "email": "tonny@email.com"
+    }
+]

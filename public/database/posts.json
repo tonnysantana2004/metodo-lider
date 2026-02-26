@@ -1,0 +1,47 @@
+[
+  { "id": 1, "userId": 1, "type": "definicao_prioridade", "date": "2026-02-20T03:00:00.000Z", "data": {} },
+
+  { "id": 2, "userId": 1, "type": "definicao_prioridade", "date": "2026-02-21T03:00:00.000Z", "data": {} },
+  { "id": 2, "userId": 1, "type": "definicao_prioridade", "date": "2026-02-21T03:00:00.000Z", "data": {} },
+  { "id": 2, "userId": 1, "type": "definicao_prioridade", "date": "2026-02-21T03:00:00.000Z", "data": {} },
+
+  { "id": 3, "userId": 1, "type": "definicao_prioridade", "date": "2026-02-22T03:00:00.000Z", "data": {} },
+  { "id": 3, "userId": 1, "type": "definicao_prioridade", "date": "2026-02-22T03:00:00.000Z", "data": {} },
+
+  { "id": 4, "userId": 1, "type": "definicao_prioridade", "date": "2026-02-23T03:00:00.000Z", "data": {} },
+  { "id": 4, "userId": 1, "type": "definicao_prioridade", "date": "2026-02-23T03:00:00.000Z", "data": {} },
+  { "id": 4, "userId": 1, "type": "definicao_prioridade", "date": "2026-02-23T03:00:00.000Z", "data": {} },
+  { "id": 4, "userId": 1, "type": "definicao_prioridade", "date": "2026-02-23T03:00:00.000Z", "data": {} },
+
+  { "id": 5, "userId": 1, "type": "definicao_prioridade", "date": "2026-02-24T03:00:00.000Z", "data": {} },
+  { "id": 5, "userId": 1, "type": "definicao_prioridade", "date": "2026-02-24T03:00:00.000Z", "data": {} },
+
+  { "id": 6, "userId": 1, "type": "definicao_prioridade", "date": "2026-02-25T03:00:00.000Z", "data": {} },
+
+  { "id": 7, "userId": 1, "type": "definicao_prioridade", "date": "2026-02-26T03:00:00.000Z", "data": {} },
+
+
+
+  { "id": 1, "userId": 1, "type": "postura_lider", "date": "2026-02-20T03:00:00.000Z", "data": {} },
+
+  { "id": 2, "userId": 1, "type": "postura_lider", "date": "2026-02-21T03:00:00.000Z", "data": {} },
+  { "id": 2, "userId": 1, "type": "postura_lider", "date": "2026-02-21T03:00:00.000Z", "data": {} },
+
+  { "id": 3, "userId": 1, "type": "postura_lider", "date": "2026-02-22T03:00:00.000Z", "data": {} },
+  { "id": 3, "userId": 1, "type": "postura_lider", "date": "2026-02-22T03:00:00.000Z", "data": {} },
+  { "id": 3, "userId": 1, "type": "postura_lider", "date": "2026-02-22T03:00:00.000Z", "data": {} },
+  { "id": 3, "userId": 1, "type": "postura_lider", "date": "2026-02-22T03:00:00.000Z", "data": {} },
+  
+  { "id": 4, "userId": 1, "type": "postura_lider", "date": "2026-02-23T03:00:00.000Z", "data": {} },
+  { "id": 4, "userId": 1, "type": "postura_lider", "date": "2026-02-23T03:00:00.000Z", "data": {} },
+
+  { "id": 5, "userId": 1, "type": "postura_lider", "date": "2026-02-24T03:00:00.000Z", "data": {} },
+
+  { "id": 6, "userId": 1, "type": "postura_lider", "date": "2026-02-25T03:00:00.000Z", "data": {} },
+  { "id": 6, "userId": 1, "type": "postura_lider", "date": "2026-02-25T03:00:00.000Z", "data": {} },
+  { "id": 6, "userId": 1, "type": "postura_lider", "date": "2026-02-25T03:00:00.000Z", "data": {} },
+
+  { "id": 7, "userId": 1, "type": "postura_lider", "date": "2026-02-26T03:00:00.000Z", "data": {} }
+
+
+]

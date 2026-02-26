@@ -1,19 +1,10 @@
-import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnDestroy, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, Input, OnChanges, OnDestroy, SimpleChanges, ViewChild } from '@angular/core';
 import ApexCharts from 'apexcharts';
-
-interface DailyPoint {
-  x: string;
-  y: number;
-}
+import { PostService } from '../../../services/post.service';
 
 interface Series {
   name: string;
-  data: DailyPoint[];
-}
-
-interface PostInput {
-  type: string;
-  date: string | Date;
+  data: number[];
 }
 
 @Component({
@@ -23,47 +14,92 @@ interface PostInput {
   templateUrl: './fills-chart-card.component.html',
   styleUrl: './fills-chart-card.component.scss',
 })
+
 export class FillsChartCardComponent implements AfterViewInit, OnDestroy, OnChanges {
-  @Input() title: string = 'Preenchimentos nos últimos 30 dias';
-  @Input() days: number = 30;
-  @Input() posts: PostInput[] = [];
+
+  postService = inject(PostService);
+
+  @Input() days: number = 7;
+  @Input() title: string = 'Preenchimentos nos últimos ' + this.days + ' dias';
+  posts: any[] = [];
+
+  postTypes = [
+    { type: 'definicao_prioridade', name: 'Definição de Prioridade' },
+    { type: 'postura_lider', name: 'Postura do Líder' },
+  ];
+
 
   @ViewChild('chart', { static: true }) chartRef!: ElementRef<HTMLDivElement>;
-
   private chart?: ApexCharts;
 
-  // Configurações iniciais do chart
   ngAfterViewInit(): void {
-    const options: any = {
+    this.postService.findAll().subscribe((posts) => {
+      this.posts = posts;
+
+      const options = this.getChartOptions();
+      this.chart = new ApexCharts(this.chartRef.nativeElement, options);
+      this.chart.render();
+    });
+  }
+
+  // Preciso retornar um array com a quantidade de posts em cada data
+  // Precisa estar na ordem correta
+  private getSeriesData(postType: string) {
+
+    const lastDays = this.getLastSevenDays();
+    const results: any = [];
+
+    lastDays.forEach(day => {
+
+      let count = 0;
+
+      this.posts.forEach(post => {
+        if (post.date === day && post.type === postType) ++count;
+      });
+
+      results.push(count);
+
+    });
+
+    return results;
+  }
+
+  private getSeries(): Series[] {
+
+    const series: Series[] = [];
+
+    this.postTypes.forEach(postType => {
+
+      series.push({
+        name: postType.name,
+        data: this.getSeriesData(postType.type)
+      });
+
+    });
+
+    return series;
+  }
+
+  getChartOptions(): object {
+    var options = {
+      series: this.getSeries(),
       chart: {
-        type: 'area',
-        height: 260,
         toolbar: {
           show: false,
         },
-        zoom: {
-          enabled: true,
-        },
+        zoom: { enabled: false },
+        height: 350,
+        type: 'area'
       },
       dataLabels: {
-        enabled: false,
+        enabled: false
       },
       stroke: {
         curve: 'smooth',
-        width: 7,
+        width: 7
       },
-      series: this.buildSeries(),
-      xaxis: {
-        type: 'datetime',
-        labels: {
-          format: 'dd/MM',
-        },
-      },
-      yaxis: {
-        labels: {
-          formatter: (value: number) => value.toFixed(0),
-        },
-      },
+      yaxis: this.getYaxisOptions(),
+      xaxis: this.getXaxisOptions(),
       fill: {
         type: 'gradient',
         gradient: {
@@ -73,128 +109,100 @@ export class FillsChartCardComponent implements AfterViewInit, OnDestroy, OnChan
           stops: [10, 100],
         },
       },
-      legend: {
-        position: 'bottom',
-        horizontalAlign: 'left',
-      },
-      colors: ['#5428ce', '#3fb2fb'],
       tooltip: {
         x: {
-          format: 'dd/MM/yyyy',
+          format: 'dd/MM/yy'
         },
       },
+
     };
 
-    this.chart = new ApexCharts(this.chartRef.nativeElement, options);
-    this.chart.render();
+    return options;
+  }
+
+  private getLastSevenDays(): string[] {
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const dayKeys: string[] = [];
+
+    for (let i = this.days - 1; i >= 0; i--) {
+      const loopDay = new Date(today);
+      loopDay.setDate(loopDay.getDate() - i);
+      dayKeys.push(loopDay.toISOString());
+    }
+
+    // ['2026-02-26', '2026-02-25', ...]
+    return dayKeys;
+  }
+
+
+  getXaxisOptions() {
+    return {
+      type: 'datetime',
+      categories: this.getLastSevenDays()
+    };
+  }
+
+  getYaxisOptions() {
+
+    const options =
+    {
+      show: true,
+      showAlways: false,
+      showForNullSeries: true,
+      logBase: 10,
+      min: 0,
+      max: (maxValue: number) => {
+        return maxValue + 1;
+      },
+      forceNiceScale: true,
+      labels: {
+        show: true,
+        showDuplicates: false,
+        align: 'right',
+        maxWidth: 160,
+        style: {
+          colors: ['#777777'],
+          fontSize: '12px',
+          fontFamily: 'Nunito Sans, Arial, sans-serif',
+          fontWeight: 500,
+        },
+      },
+      axisBorder: {
+        show: false,
+        color: '#e8eaee',
+        offsetX: 0,
+        offsetY: 0
+      },
+
+    }
+    return options;
   }
 
   // Garante que o chart é atualizado
   // sempre que as variáveis forem
   ngOnChanges(changes: SimpleChanges): void {
-    if (!this.chart) {
-      return;
-    }
+
+    if (!this.chart) return;
 
     if (changes['posts'] || changes['days']) {
-      const series = this.buildSeries();
-      this.chart.updateSeries(series);
+      const series = this.getSeries();
+      const yaxis = this.getYaxisOptions();
+
+      this.chart.updateOptions(
+        {
+          series,
+          yaxis,
+        },
+        false,
+        true
+      );
     }
   }
 
   ngOnDestroy(): void {
-    if (this.chart) {
-      this.chart.destroy();
-    }
+    if (this.chart) this.chart.destroy();
   }
 
-  private buildSeries(): Series[] {
-    if (!this.posts || this.posts.length === 0) {
-      return this.createMockSeries();
-    }
-
-    const days = this.days ?? 30;
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    const dayKeys: string[] = [];
-    const dayIndexMap = new Map<string, number>();
-
-    for (let i = days - 1; i >= 0; i--) {
-      const d = new Date(today);
-      d.setDate(d.getDate() - i);
-      const key = d.toISOString().split('T')[0];
-      dayIndexMap.set(key, dayKeys.length);
-      dayKeys.push(key);
-    }
-
-    const series: Series[] = [];
-
-    const toolConfigs = [
-      { type: 'definicao_prioridade', name: 'Definição de Prioridade' },
-      { type: 'postura_lider', name: 'Postura do Líder' },
-    ];
-
-    for (const tool of toolConfigs) {
-      const toolPosts = this.posts.filter((p) => p.type === tool.type);
-      if (!toolPosts.length) {
-        continue;
-      }
-
-      const counts = new Array(dayKeys.length).fill(0);
-
-      for (const post of toolPosts) {
-        const d = new Date(post.date);
-        if (isNaN(d.getTime())) {
-          continue;
-        }
-        d.setHours(0, 0, 0, 0);
-        const key = d.toISOString().split('T')[0];
-        const idx = dayIndexMap.get(key);
-        if (idx === undefined) {
-          continue;
-        }
-        counts[idx]++;
-      }
-
-      const total = counts.reduce((sum, v) => sum + v, 0);
-      if (total === 0) {
-        continue;
-      }
-
-      const data: DailyPoint[] = dayKeys.map((key, index) => ({
-        x: key,
-        y: counts[index],
-      }));
-
-      series.push({
-        name: tool.name,
-        data,
-      });
-    }
-
-    return series.length ? series : this.createMockSeries();
-  }
-
-  private createMockSeries(): Series[] {
-    const today = new Date();
-    const days = 7;
-    const tools = ['Definição de Prioridade', 'Postura do Líder'];
-
-    return tools.map((tool, idx) => ({
-      name: tool,
-      data: Array.from({ length: days }).map((_, i) => {
-        const d = new Date(today);
-        d.setDate(d.getDate() - (days - 1 - i));
-
-        const base = 5 + idx * 3;
-        const variation = Math.floor(Math.random() * 6);
-
-        return {
-          x: d.toISOString().split('T')[0],
-          y: base + variation,
-        };
-      }),
-    }));
-  }
 }
