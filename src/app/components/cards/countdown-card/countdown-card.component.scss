@@ -3,8 +3,9 @@
 .card-block{
     padding: vwsize(25px) vwsize($space-md);
     background:white;
+    border:solid 1px $border-gray-color;
+    background: white;
     border-radius: $border-radius;
-    box-shadow: 0px vwsize(3px) 2px $soft-white;
     display: grid;
     grid-template-columns: 0.5fr 1fr;
     justify-content: center;

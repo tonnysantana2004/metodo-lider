@@ -3,18 +3,22 @@
     <img class="avatar" [src]="profileImage + '&backgroundColor=a4c0ea'" [alt]="fullName || 'Foto do usuário'" />
 
     @if (count !== null && count !== undefined) {
-      <div class="count-badge">
-        {{ count }}
-      </div>
+    <div class="count-badge">
+      {{ count }}
+    </div>
     }
-    
+
   </div>
 
   <div class="info">
     <div class="name">{{ fullName }}</div>
     <div class="contact">
+      @if(email) {
       <div class="email">{{ email }}</div>
+      }
+      @if(phone) {
       <div class="phone">{{ phone }}</div>
+      }
     </div>
   </div>
 </div>

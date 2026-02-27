@@ -6,12 +6,11 @@ a {
 
 .button {
   background: $accent-color;  
-  height: vwsize(50px);
+  height: vwsize($input-height);
   padding: 0 vwsize($space-sm);
   text-align: center;
   color: white;
   border-radius: $border-radius;
   width: 100%;
   cursor: pointer;
-
 }

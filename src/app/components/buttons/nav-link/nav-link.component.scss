@@ -4,8 +4,8 @@
   display: inline-flex;
   align-items: center;
   gap: vwsize($space-sm);
-  padding: 0 vwsize($space-md);
-  height: vwsize(50px);
+  padding: 0 vwsize($space-sm);
+  height: vwsize($input-height);
   border-radius: $border-radius;
   color: $text-color;
   text-decoration: none;

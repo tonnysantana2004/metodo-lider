@@ -2,20 +2,26 @@
 
 .countdown-cards {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: vwsize($space-lg)
+    grid-template-columns: 2fr 1fr;
+    gap: vwsize($space-md);
+
+    & .inner-group{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: vwsize($space-md);
+    }
 }
 
 .overview-wrapper {
     display: flex;
     flex-direction: column;
-    gap: vwsize($space-lg);
+    gap: vwsize($space-md);
 }
 
 .chart-section {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: vwsize($space-lg)
+    gap: vwsize($space-md)
 }
 
 .users-list {

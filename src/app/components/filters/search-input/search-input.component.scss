@@ -1,0 +1,50 @@
+@use "abstracts" as *;
+
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: vwsize($space-sm);
+  width: vwsize(500px);
+  height: vwsize($input-height);
+  padding: 0 vwsize($space-sm);
+  border-radius: $border-radius;
+
+  border:solid 1px $border-gray-color;
+  background: white;
+  border-radius: $border-radius;
+  transition: outline .2s;
+  
+  outline: solid 2px rgba($accent-color, 0);
+
+  &:focus-within {
+    outline: solid 2px rgba($accent-color, 1);
+
+    & .search-icon {
+      color:rgba($accent-color, 1)
+    }
+  }
+
+}
+
+.search-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $text-color;
+  flex-shrink: 0;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: inherit;
+  color: $primary-color;
+
+  &::placeholder {
+    color: $text-color;
+  }
+}
