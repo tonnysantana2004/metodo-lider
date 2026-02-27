@@ -1,9 +1,9 @@
 @use "abstracts" as *;
 
-.card-block{
+.card-block {
     padding: vwsize(25px) vwsize($space-md);
-    background:white;
-    border:solid 1px $border-gray-color;
+    background: white;
+    border: solid 1px $border-gray-color;
     background: white;
     border-radius: $border-radius;
     display: grid;
@@ -11,19 +11,34 @@
     justify-content: center;
     align-items: center;
 
+    position: relative;
+
     & .card-icon {
         width: vwsize(70px);
         display: flex;
         padding: vwsize(20px);
-        background-color:color-mix(in srgb, currentColor 5.5%, transparent);
+        background-color: color-mix(in srgb, currentColor 5.5%, transparent);
         border-radius: 100%;
-        margin:auto
+        margin: auto
     }
 
-    & .count-wrapper{
+    & .count-wrapper {
         display: flex;
         flex-direction: column;
         gap: vwsize($space-sm);
-        color:$primary-color;
+        color: $primary-color;
+    }
+
+    &:after {
+        content: "";
+        width: vwsize(35px);
+        height: vwsize(10px);
+        background: black;
+        position: absolute;
+        top: vwsize(15px);
+        right: vwsize(15px);
+
+        background: radial-gradient(circle at 10% 50%, #cccfcf calc(3 * (100vw / 1920)), transparent calc(4 * (100vw / 1920))), radial-gradient(circle at 50% 50%, #cccfcf calc(3 * (100vw / 1920)), transparent calc(4 * (100vw / 1920))), radial-gradient(circle at 90% 50%, #cccfcf calc(3 * (100vw / 1920)), transparent calc(4 * (100vw / 1920)));
+        /* ajusta o tamanho dos círculos */
     }
 }
