@@ -1,0 +1,21 @@
+@use "abstracts" as *;
+
+.users-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: vwsize($space-md);
+}
+
+.actions-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: vwsize($space-md);
+}
+
+
+.users-list {
+  display: flex;
+  flex-direction: column;
+  gap: vwsize($space-sm);
+}

@@ -1,0 +1,29 @@
+<app-dashboard-layout pageTitle="Usuários Cadastrados">
+
+  <div class="users-page-wrapper">
+
+    <app-card>
+
+      <div class="actions-bar">
+        <app-search-input placeholder="Pesquisar por nome" (valueChange)="onSearchChange($event)">
+        </app-search-input>
+
+        <app-button-primary text="Exportar para Excel">
+        </app-button-primary>
+      </div>
+
+    </app-card>
+
+    <app-card>
+        <div class="users-list">
+          @for (user of filteredUsers; track user; let i = $index) {
+          <app-user-list-item [profileImage]="user.profileImage" [fullName]="user.fullName" [email]="user.email"
+            [phone]="user.phone" [count]="null">
+          </app-user-list-item>
+          }
+        </div>
+    </app-card>
+
+  </div>
+
+</app-dashboard-layout>

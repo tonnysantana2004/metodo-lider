@@ -12,7 +12,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: vwsize($space-lg) vwsize($space-md) vwsize($space-md)  vwsize($space-md);
+    padding: vwsize($space-md)  vwsize($space-md);
 
     border-bottom:solid 1px $soft-white;
 
@@ -28,7 +28,7 @@
     }
   }
 
-  .chart-content {
+  .card-content {
     padding: vwsize($space-sm);
     width: 100%;
     height: auto;
