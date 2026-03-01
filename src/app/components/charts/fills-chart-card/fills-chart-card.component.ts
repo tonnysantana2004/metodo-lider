@@ -74,7 +74,7 @@ export class FillsChartCardComponent {
       series: this.getSeries(),
 
       grid: {
-        padding: { left: 0 }
+        padding: { left: 20 }
       },
 
       chart: {
