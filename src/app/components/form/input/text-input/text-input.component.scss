@@ -3,20 +3,45 @@
 .form-control {
 	display: flex;
 	flex-direction: column;
-	gap: vwsize($space-sm);
 	width: 100%;
-	
+	position: relative;
+
+	& label {
+		font-size: .8em;
+		position: absolute;
+		top: 50%;
+		left: 1em;
+		transform: translate(0, -50%);
+		background-color: white;
+		padding: 0 vwsize(5px);
+		transition:all .2s;
+		opacity: .7;
+		z-index: 1;
+		user-select: none;
+	}
+
+	&.active label {
+		top: 0;
+		left: 1em;
+		font-size:.9em;
+		transform: translate(0, -50%);
+		background-color: white;
+		padding: 0 vwsize(5px);
+		opacity: 1;
+		pointer-events: none;
+	}
+
 	& input {
+		font-size: .9em;
 		height: vwsize($input-height);
 		border-radius: .4em;
-		border: solid 1px #e0e0e0;
+		border: solid 1px $border-gray-color;
 		outline: none;
 		padding: 0 vwsize($space-sm);
-		box-shadow: 0px vwsize(3px) 2px #dadada;
 	}
-	
+
 	& .field-errors {
 		color: #e30d0d;
 	}
-	
+
 }

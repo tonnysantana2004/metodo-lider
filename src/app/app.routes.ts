@@ -3,6 +3,7 @@ import { LoginRegisterLayoutComponent } from "./login/login-register-layout/logi
 import { overviewComponent } from "./dashboard/overview/overview.component";
 import { authGuardGuard } from "./auth-guard.guard";
 import { UsersListComponent } from "./dashboard/users/users.component";
+import { CreateUserComponent } from './dashboard/users/create-user/create-user.component';
 
 export const routes: Routes = [
     {
@@ -16,8 +17,17 @@ export const routes: Routes = [
     },
     {
         path: 'users',
-        component: UsersListComponent,
-        canActivate: [authGuardGuard]
+        canActivate: [authGuardGuard],
+        children : [
+            {
+                path : '',
+                component : UsersListComponent
+            },
+            {
+                path : 'create',
+                component : CreateUserComponent
+            }
+        ]
     },
     {
         path: '**',

@@ -1,11 +1,12 @@
-<div class="form-control">
+<div class="form-control" [class.active]="activeLabel">
 	<label	for="">{{label}}</label>
 	<input 	type="text"
 		   	[value]="value"
 		   	[placeholder]="placeholder"
 		  	[disabled]="disabled"
 		   	(input)="handleInputChange($event)"
-		  	(blur)="onTouched()"
+		  	(blur)="handleBlur()"
+			(focus)="handleFocus()"
 	>
 	<div class="field-footer">
         <span class="field-errors">
