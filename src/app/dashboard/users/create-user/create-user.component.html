@@ -2,9 +2,28 @@
 
     <app-card-with-header headerTitle="Informações Básicas">
 
-        <form>
+        <form [formGroup]="createUserForm" (ngSubmit)="submit()">
 
-            <app-text-input></app-text-input>
+
+            <div class="field-group">
+
+                <app-text-input label="Nome Completo" [errors]="getFieldErrors('fullName')"
+                    formControlName="fullName" />
+
+                <app-text-input label="Profissão" [errors]="getFieldErrors('profession')"
+                    formControlName="profession" />
+
+            </div>
+
+            <div class="field-group">
+
+                <app-text-input label="Email" [errors]="getFieldErrors('email')" formControlName="email" />
+
+                <app-text-input label="Telefone" [errors]="getFieldErrors('phone')" formControlName="phone" />
+
+            </div>
+
+            <app-text-input label="Senha" [errors]="getFieldErrors('password')" formControlName="password" />
 
         </form>
 

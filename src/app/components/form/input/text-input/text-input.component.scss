@@ -1,6 +1,24 @@
 @use "abstracts" as *;
 
-.form-control {
+
+.field-wrapper {
+
+	&:has(.field-errors p) {
+
+
+		& input {
+			border: solid vwsize(3px) #e30d0d;
+		}
+
+		& .active label {
+
+			color: #e30d0d;
+		}
+
+	}
+}
+
+.input-wrapper {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
@@ -14,7 +32,7 @@
 		transform: translate(0, -50%);
 		background-color: white;
 		padding: 0 vwsize(5px);
-		transition:all .2s;
+		transition: all .2s;
 		opacity: .7;
 		z-index: 1;
 		user-select: none;
@@ -24,7 +42,7 @@
 	&.active label {
 		top: 0;
 		left: 1em;
-		font-size:.9em;
+		font-size: .9em;
 		transform: translate(0, -50%);
 		background-color: white;
 		padding: 0 vwsize(5px);
@@ -36,13 +54,17 @@
 		font-size: .9em;
 		height: vwsize($input-height);
 		border-radius: .4em;
-		border: solid 1px $border-gray-color;
+		border: solid vwsize(2px) $border-gray-color;
 		outline: none;
 		padding: 0 vwsize($space-sm);
 	}
+}
+
+.field-footer {
+	margin-top: vwsize($space-sm);
 
 	& .field-errors {
 		color: #e30d0d;
+		font-size: .8em;
 	}
-
 }

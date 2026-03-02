@@ -47,15 +47,12 @@ export class TextInputComponent implements ControlValueAccessor {
 
     // Atualiza o value do componente sempre que o campo é digitado
     handleInputChange(event: Event) {
-        const button = event.target as HTMLButtonElement;
-        if (button) {
-            if (button.value !== null && button.value !== undefined && button.value !== "") {
-                this.activeLabel = true;
-            } else {
-                this.activeLabel = false;
-            }
-            this.onChange(button.value);
-        }
+        const input = event.target as HTMLInputElement;
+        const value = input.value ?? "";
+
+        this.value = value;        // mantém estado interno consistente
+        this.activeLabel = value !== "";
+        this.onChange(value);      // notifica o Angular Forms
     }
 
     handleBlur() {
@@ -66,7 +63,6 @@ export class TextInputComponent implements ControlValueAccessor {
             console.log(this.value)
             this.activeLabel = false;
         }
-        
 
         this.onTouched()
     }
