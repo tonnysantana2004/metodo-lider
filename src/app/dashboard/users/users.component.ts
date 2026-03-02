@@ -1,19 +1,19 @@
 import { Component, inject } from '@angular/core';
-import { DashboardLayoutComponent } from '../dashboard-layout/dashboard-layout.component';
-import { CardWithHeaderComponent } from '../../components/cards/card-with-header/card-with-header.component';
-import { UserListItemComponent } from '../../components/listings/user-list-item/user-list-item.component';
-import { SearchInputComponent } from '../../components/filters/search-input/search-input.component';
 import { ButtonPrimaryComponent } from '../../components/buttons/button-primary/button-primary.component';
-import { UserService } from '../../services/user.service';
 import { CardComponent } from "../../components/cards/card/card.component";
+import { SearchInputComponent } from '../../components/filters/search-input/search-input.component';
+import { UserListItemComponent } from '../../components/listings/user-list-item/user-list-item.component';
+import { UserService } from '../../services/user.service';
+import { DashboardLayoutComponent } from '../dashboard-layout/dashboard-layout.component';
+import { UsersTableComponent } from '../../components/tables/users-table/users-table.component';
 
 @Component({
   selector: 'app-users-list',
   standalone: true,
   imports: [
     DashboardLayoutComponent,
-    CardWithHeaderComponent,
     UserListItemComponent,
+    UsersTableComponent,
     SearchInputComponent,
     ButtonPrimaryComponent,
     CardComponent
