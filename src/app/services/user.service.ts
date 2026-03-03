@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
 
   private readonly postsUrl = 'assets/database/users.json';

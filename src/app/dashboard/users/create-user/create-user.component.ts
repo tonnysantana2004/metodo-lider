@@ -5,10 +5,11 @@ import { TextInputComponent } from "../../../components/form/input/text-input/te
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServiceService } from '../../../auth-service.service';
+import {ButtonPrimaryComponent} from "../../../components/buttons/button-primary/button-primary.component";
 
 @Component({
   selector: 'app-create-user',
-  imports: [DashboardLayoutComponent, CardWithHeaderComponent, TextInputComponent,ReactiveFormsModule],
+    imports: [DashboardLayoutComponent, CardWithHeaderComponent, TextInputComponent, ReactiveFormsModule, ButtonPrimaryComponent],
   templateUrl: './create-user.component.html',
   styleUrl: './create-user.component.scss',
 })

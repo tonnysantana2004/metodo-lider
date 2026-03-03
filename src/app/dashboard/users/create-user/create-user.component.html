@@ -1,32 +1,23 @@
 <app-dashboard-layout pageTitle="Criar Usuário">
-
     <app-card-with-header headerTitle="Informações Básicas">
-
         <form [formGroup]="createUserForm" (ngSubmit)="submit()">
-
-
             <div class="field-group">
-
                 <app-text-input label="Nome Completo" [errors]="getFieldErrors('fullName')"
                     formControlName="fullName" />
-
                 <app-text-input label="Profissão" [errors]="getFieldErrors('profession')"
                     formControlName="profession" />
-
             </div>
-
             <div class="field-group">
-
                 <app-text-input label="Email" [errors]="getFieldErrors('email')" formControlName="email" />
-
                 <app-text-input label="Telefone" [errors]="getFieldErrors('phone')" formControlName="phone" />
-
             </div>
-
             <app-text-input label="Senha" [errors]="getFieldErrors('password')" formControlName="password" />
 
+			<div class="submit-wrapper">
+			<app-button-primary type="submit" text="Criar Usuário"></app-button-primary>
+			</div>
+
+
         </form>
-
     </app-card-with-header>
-
 </app-dashboard-layout>

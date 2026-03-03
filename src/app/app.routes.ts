@@ -4,6 +4,8 @@ import { overviewComponent } from "./dashboard/overview/overview.component";
 import { authGuardGuard } from "./auth-guard.guard";
 import { UsersListComponent } from "./dashboard/users/users.component";
 import { CreateUserComponent } from './dashboard/users/create-user/create-user.component';
+import {PostureComponent} from "./dashboard/posture/posture.component";
+import {PrioritiesComponent} from "./dashboard/priorities/priorities.component";
 
 export const routes: Routes = [
     {
@@ -28,6 +30,16 @@ export const routes: Routes = [
                 component : CreateUserComponent
             }
         ]
+    },
+    {
+        path: 'priorities',
+        component: PrioritiesComponent,
+        canActivate: [authGuardGuard]
+    },
+    {
+        path: 'posture',
+        component: PostureComponent,
+        canActivate: [authGuardGuard]
     },
     {
         path: '**',

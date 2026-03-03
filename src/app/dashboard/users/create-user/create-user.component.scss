@@ -11,3 +11,7 @@ form {
     grid-template-columns: 1fr 1fr;
     gap: vwsize($space-md);
 }
+
+.submit-wrapper{
+	width: vwsize(400px);
+}
