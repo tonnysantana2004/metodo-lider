@@ -1,1 +1,32 @@
-<p>priorities works!</p>
+<app-dashboard-layout pageTitle="Definir Prioridades">
+	<app-card-with-header headerTitle="Qual o nível de importância de sua decisão?">
+		<form [formGroup]="priorityForm" (ngSubmit)="submit()">
+			
+			<app-checkbox-button-input label="Fiz algo que cobraria da minha equipe?  
+Cheguei no horário? Segui os processos? Mantive postura profissional?"
+				formControlName="pergunta1"></app-checkbox-button-input>
+
+				<app-checkbox-button-input label="Tratei situações parecidas do mesmo jeito?  
+Apliquei os mesmos critérios sem favorecimento?"
+				formControlName="pergunta2"></app-checkbox-button-input>
+
+				<app-checkbox-button-input label="Minhas ações bateram com meu discurso?  
+Pratiquei o que preguei? Fui congruente entre fala e ação?"
+				formControlName="pergunta3"></app-checkbox-button-input>
+
+				<app-checkbox-button-input label="Estava disponível quando alguém precisou de mim?  
+Ouvi minha equipe? Dei atenção quando necessário?"
+				formControlName="pergunta4"></app-checkbox-button-input>
+				
+				<app-checkbox-button-input label="Assumi algum problema ou empurrei para outro?  
+Assumi as consequências das minhas decisões?"
+				formControlName="pergunta5"></app-checkbox-button-input>
+
+			<div class="submit-wrapper">
+				<app-button-primary type="submit" text="Salvar Progresso"></app-button-primary>
+			</div>
+
+
+		</form>
+	</app-card-with-header>
+</app-dashboard-layout>

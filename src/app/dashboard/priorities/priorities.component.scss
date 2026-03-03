@@ -1,0 +1,17 @@
+@use "abstracts" as *;
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: vwsize($space-md);
+}
+
+.field-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: vwsize($space-md);
+}
+
+.submit-wrapper{
+	width: vwsize(400px);
+}

@@ -1,0 +1,48 @@
+@use "abstracts" as *;
+
+.field-wrapper{
+    display: flex;
+    gap:vwsize($space-md);
+    // justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: vwsize($space-sm);
+    border: solid vwsize(2px) $border-gray-color;
+    border-radius: .4em;
+
+    & p {
+        height: fit-content;
+        margin:0;
+        user-select: none;
+    }
+}
+
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: auto;
+    width: vwsize(30px);
+    border: none !important;
+    border-radius: 3px !important;
+    background-color: #cccccc90;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    aspect-ratio: 1;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #4CAF50 !important;
+    border-color: #4CAF50;
+}
+
+input[type="checkbox"]:checked::after {
+    content: '\2713';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.4em;
+    color: white;
+}

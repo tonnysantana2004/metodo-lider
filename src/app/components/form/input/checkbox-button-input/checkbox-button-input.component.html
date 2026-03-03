@@ -1,0 +1,5 @@
+<label class="field-wrapper" [for]="formControlName">
+        <input type="checkbox" [value]="value" [disabled]="disabled" (input)="handleInputChange($event)"
+            (blur)="handleBlur()" [id]="formControlName">
+        <p >{{label}}</p>
+</label>
